@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/matchup/:slug", "destination": "/matchup.html" }
+    { "source": "/matchup/:slug", "destination": "/matchup" }
   ],
   "headers": [
     {
