@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Painel do Marlon</title>
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <div class="row container">
+      <a class="brand" href="../index.html">
+        <img
+          src="https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/3"
+          srcset="https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/2 1x, https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/3 2x"
+          alt="Badge do Canal"
+          class="mark"
+        />
+      <span>Marlon547<small>Painel</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="../index.html">Ver site →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero hero-compact dash-header">
+  <div class="container dash-header-row">
+    <div>
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Painel administrativo</p>
+      <h1>
+        <span class="hero-line">Painel</span>
+        <span class="hero-line hero-line--muted">do Marlon.</span>
+      </h1>
+    </div>
+    <div class="dash-account">
+      <span id="user-email" class="dash-account-email"></span>
+      <a href="#" id="logout-link" class="btn btn-ghost">Sair</a>
+    </div>
+  </div>
+</header>
+
+<div class="container gate-panel" id="gate-message">
+  <p>Verificando acesso...</p>
+</div>
+
+<div id="dashboard-content" style="display:none;">
+
+<nav class="dash-subnav" id="dash-subnav">
+  <div class="container dash-subnav-row">
+    <a href="#section-matchups" data-subnav>Matchups</a>
+    <a href="#section-credibility" data-subnav>Credibilidade</a>
+    <a href="#section-general" data-subnav>Guia geral</a>
+    <a href="#section-clips" data-subnav>Clipes</a>
+  </div>
+</nav>
+
+<section class="section" id="section-matchups">
+  <div class="container">
+    <div class="section-head"><div><h2>Novo matchup</h2><p>Escolha o inimigo e preencha o que ajuda a vencer essa lane.</p></div></div>
+    <div class="dash-layout">
+    <form class="form-card dash-card dash-card--matchup" id="matchup-form">
+      <input type="hidden" id="matchup-doc-id" value="" />
+
+      <div class="dash-fieldset">
+      <div class="form-row">
+        <div>
+          <label for="m-champion">Campeão inimigo</label>
+          <select id="m-champion" required></select>
+        </div>
+        <div>
+          <label for="m-tier">Dificuldade</label>
+          <select id="m-tier" required>
+            <option value="facil">Match Fácil</option>
+            <option value="normal" selected>Match Médio</option>
+            <option value="medio">Match Difícil</option>
+            <option value="dificil">Match Impossível</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="m-summary">Resumo do matchup</label>
+      <textarea id="m-summary" placeholder="Como é essa lane de forma geral..."></textarea>
+      </div>
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Runas</p>
+      <div class="form-row">
+        <div>
+          <label for="m-runes-primary-search">Runas principais</label>
+          <div class="item-picker" data-target="m-runes-primary" data-source="runes">
+            <input type="text" id="m-runes-primary-search" class="item-picker-search" placeholder="Buscar runa... (ex: conquistador)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="m-runes-primary" />
+          </div>
+          <p class="hint">A primeira runa escolhida aqui é usada como a keystone.</p>
+        </div>
+        <div>
+          <label for="m-runes-secondary-search">Runas secundárias</label>
+          <div class="item-picker" data-target="m-runes-secondary" data-source="runes">
+            <input type="text" id="m-runes-secondary-search" class="item-picker-search" placeholder="Buscar runa... (ex: osso revestido)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="m-runes-secondary" />
+          </div>
+        </div>
+      </div>
+
+      <label>Runas de estatística</label>
+      <div class="form-row form-row-3">
+        <div>
+          <label for="m-shard-offense" style="margin-top:0;">Linha 1 (ofensiva)</label>
+          <select id="m-shard-offense">
+            <option value="">Não escolhida</option>
+            <option value="AdaptiveForce">Força Adaptativa</option>
+            <option value="AttackSpeed">Velocidade de Ataque</option>
+            <option value="AbilityHaste">Aceleração de Habilidade</option>
+          </select>
+        </div>
+        <div>
+          <label for="m-shard-flex" style="margin-top:0;">Linha 2 (flexível)</label>
+          <select id="m-shard-flex">
+            <option value="">Não escolhida</option>
+            <option value="AdaptiveForce">Força Adaptativa</option>
+            <option value="MovementSpeed">Velocidade de Movimento</option>
+            <option value="HealthScaling">Escalamento de Vida</option>
+          </select>
+        </div>
+        <div>
+          <label for="m-shard-defense" style="margin-top:0;">Linha 3 (defensiva)</label>
+          <select id="m-shard-defense">
+            <option value="">Não escolhida</option>
+            <option value="Health">Vida</option>
+            <option value="Tenacity">Tenacidade e Resist. a Lentidão</option>
+            <option value="Healthscaling">Escalamento de Vida</option>
+          </select>
+        </div>
+      </div>
+      <label for="m-runes-note">Observação sobre runas/feitiços</label>
+      <textarea id="m-runes-note" placeholder="Por que essa escolha, quando trocar..."></textarea>
+      </div>
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Feitiços &amp; habilidades</p>
+      <label for="m-spells-search">Spells</label>
+      <div class="item-picker" data-target="m-spells" data-source="spells">
+        <input type="text" id="m-spells-search" class="item-picker-search" placeholder="Buscar feitiço... (ex: flash)" autocomplete="off" />
+        <div class="item-picker-results"></div>
+        <div class="item-picker-chips"></div>
+        <input type="hidden" id="m-spells" />
+      </div>
+
+      <label for="m-skill-order">Ordem de habilidades (18 valores Q/W/E/R separados por vírgula, na ordem de nível 1 a 18)</label>
+      <input type="text" id="m-skill-order" placeholder="Ex: E,Q,W,Q,Q,R,Q,W,Q,W,R,W,W,E,E,R,E,E" />
+      <p class="hint">Cada posição representa o nível do campeão. A letra é a habilidade que recebe o ponto naquele nível.</p>
+      <label for="m-skill-note">Observação sobre a ordem de habilidades</label>
+      <textarea id="m-skill-note" placeholder="Quando priorizar W em vez de Q, etc..."></textarea>
+      </div>
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Itens</p>
+      <div class="form-row">
+        <div>
+          <label for="m-items-starting-search">Itens iniciais</label>
+          <div class="item-picker" data-target="m-items-starting">
+            <input type="text" id="m-items-starting-search" class="item-picker-search" placeholder="Buscar item... (ex: doran)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="m-items-starting" />
+          </div>
+        </div>
+        <div>
+          <label for="m-items-starting-note">Observação — itens iniciais</label>
+          <input type="text" id="m-items-starting-note" placeholder="Quando levar cada um..." />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="m-items-first-search">Primeira compra</label>
+          <div class="item-picker" data-target="m-items-first">
+            <input type="text" id="m-items-first-search" class="item-picker-search" placeholder="Buscar item... (ex: fúria)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="m-items-first" />
+          </div>
+        </div>
+        <div>
+          <label for="m-items-first-note">Observação — primeira compra</label>
+          <input type="text" id="m-items-first-note" placeholder="Por que essa ordem..." />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="m-items-second-search">Segunda compra</label>
+          <div class="item-picker" data-target="m-items-second">
+            <input type="text" id="m-items-second-search" class="item-picker-search" placeholder="Buscar item... (ex: negatron)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="m-items-second" />
+          </div>
+        </div>
+        <div>
+          <label for="m-items-second-note">Observação — segunda compra</label>
+          <input type="text" id="m-items-second-note" placeholder="Contra o quê, quando trocar..." />
+        </div>
+      </div>
+      </div>
+
+      <div class="dash-fieldset">
+      <label for="m-tips">Como jogar essa matchup</label>
+      <textarea id="m-tips" placeholder="Trades, quando engajar, o que evitar..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Salvar matchup</button>
+        <button type="button" class="btn btn-ghost" id="matchup-cancel-edit" style="display:none;">Cancelar edição</button>
+      </div>
+      <p class="status-msg" id="matchup-status"></p>
+    </form>
+
+    <div class="dash-layout-side">
+      <h3>Matchups cadastrados</h3>
+      <table class="admin-table" id="matchup-table">
+        <thead><tr><th>Campeão</th><th>Dificuldade</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<section class="section" id="section-credibility">
+  <div class="container">
+    <div class="section-head"><div><h2>Credibilidade</h2><p>Aparece numa faixa embaixo do hero, na home. Deixe em branco o que não quiser mostrar.</p></div></div>
+
+    <form class="form-card form-card-wide dash-card dash-card--credibility" id="credibility-form">
+      <div class="form-row">
+        <div>
+          <label for="p-hours">Horas de Rengar</label>
+          <input type="text" id="p-hours" placeholder="Ex: 3.400+" />
+        </div>
+        <div>
+          <label for="p-followers">Seguidores</label>
+          <input type="text" id="p-followers" placeholder="Ex: 12K na Twitch" />
+        </div>
+      </div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Salvar números gerais</button></div>
+      <p class="status-msg" id="credibility-status"></p>
+    </form>
+
+    <div class="dash-subhead">
+      <h3>Contas ranqueadas (OP.GG)</h3>
+      <p>Cada conta vira um cartão na home com elo, LP e o histórico de vitórias/derrotas. O win rate é calculado sozinho a partir de vitórias e derrotas — não dá pra ele ficar incoerente com o placar.</p>
+    </div>
+
+    <div class="dash-layout">
+      <form class="form-card dash-card dash-card--credibility" id="account-form">
+        <input type="hidden" id="a-doc-id" value="" />
+        <label for="a-name">Nome da conta</label>
+        <input type="text" id="a-name" required placeholder="Ex: Marlon547" />
+
+        <label for="a-opgg">Link do OP.GG</label>
+        <input type="url" id="a-opgg" placeholder="https://op.gg/summoners/br/Marlon547-547" />
+
+        <div class="form-row">
+          <div>
+            <label for="a-elo">Elo</label>
+            <input type="text" id="a-elo" placeholder="Ex: Diamante 2" />
+          </div>
+          <div>
+            <label for="a-lp">Pontos (LP)</label>
+            <input type="number" id="a-lp" min="0" placeholder="Ex: 43" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="a-wins">Vitórias</label>
+            <input type="number" id="a-wins" min="0" placeholder="Ex: 120" />
+          </div>
+          <div>
+            <label for="a-losses">Derrotas</label>
+            <input type="number" id="a-losses" min="0" placeholder="Ex: 95" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Salvar conta</button>
+          <button type="button" class="btn btn-ghost" id="account-cancel-edit" style="display:none;">Cancelar edição</button>
+        </div>
+        <p class="status-msg" id="account-status"></p>
+      </form>
+
+      <div class="dash-layout-side">
+        <h3>Contas cadastradas</h3>
+        <table class="admin-table" id="account-table">
+          <thead><tr><th>Conta</th><th>Elo</th><th>W/R</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<section class="section" id="section-general">
+  <div class="container">
+    <div class="section-head"><div><h2>Conteúdo geral do guia</h2><p>É isso que monta a página "Guia geral" — do jeito bonitinho, com runas em grade, combos com ícone das habilidades e macro numerado.</p></div></div>
+    <form class="form-card form-card-wide dash-card dash-card--general" id="general-form">
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Build &amp; runas gerais</p>
+      <label for="g-builds">Texto</label>
+      <textarea id="g-builds" placeholder="Ex: Conquistador em praticamente todo jogo..."></textarea>
+
+      <div class="form-row">
+        <div>
+          <label for="g-runes-primary-search">Runas principais</label>
+          <div class="item-picker" data-target="g-runes-primary" data-source="runes">
+            <input type="text" id="g-runes-primary-search" class="item-picker-search" placeholder="Buscar runa... (ex: conquistador)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="g-runes-primary" />
+          </div>
+          <p class="hint">A primeira runa escolhida aqui é usada como a keystone.</p>
+        </div>
+        <div>
+          <label for="g-runes-secondary-search">Runas secundárias</label>
+          <div class="item-picker" data-target="g-runes-secondary" data-source="runes">
+            <input type="text" id="g-runes-secondary-search" class="item-picker-search" placeholder="Buscar runa... (ex: osso revestido)" autocomplete="off" />
+            <div class="item-picker-results"></div>
+            <div class="item-picker-chips"></div>
+            <input type="hidden" id="g-runes-secondary" />
+          </div>
+        </div>
+      </div>
+
+      <label>Runas de estatística</label>
+      <div class="form-row form-row-3">
+        <div>
+          <label for="g-shard-offense" style="margin-top:0;">Linha 1 (ofensiva)</label>
+          <select id="g-shard-offense">
+            <option value="">Não escolhida</option>
+            <option value="AdaptiveForce">Força Adaptativa</option>
+            <option value="AttackSpeed">Velocidade de Ataque</option>
+            <option value="AbilityHaste">Aceleração de Habilidade</option>
+          </select>
+        </div>
+        <div>
+          <label for="g-shard-flex" style="margin-top:0;">Linha 2 (flexível)</label>
+          <select id="g-shard-flex">
+            <option value="">Não escolhida</option>
+            <option value="AdaptiveForce">Força Adaptativa</option>
+            <option value="MovementSpeed">Velocidade de Movimento</option>
+            <option value="HealthScaling">Escalamento de Vida</option>
+          </select>
+        </div>
+        <div>
+          <label for="g-shard-defense" style="margin-top:0;">Linha 3 (defensiva)</label>
+          <select id="g-shard-defense">
+            <option value="">Não escolhida</option>
+            <option value="Health">Vida</option>
+            <option value="Tenacity">Tenacidade e Resist. a Lentidão</option>
+            <option value="Healthscaling">Escalamento de Vida</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="g-skill-order">Ordem de habilidades (18 valores Q/W/E/R separados por vírgula, na ordem de nível 1 a 18)</label>
+      <input type="text" id="g-skill-order" placeholder="Ex: E,Q,W,Q,Q,R,Q,W,Q,W,R,W,W,E,E,R,E,E" />
+      <label for="g-skill-note">Observação sobre a ordem de habilidades</label>
+      <textarea id="g-skill-note" placeholder="Quando priorizar W em vez de Q, etc..."></textarea>
+      </div>
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Combos &amp; mecânicas</p>
+      <label for="g-combos-intro">Texto de introdução</label>
+      <textarea id="g-combos-intro" placeholder="Ex: O Rengar gira em torno da ferocidade..."></textarea>
+
+      <label>Combos</label>
+      <div class="dash-repeat-list" id="combos-editor"></div>
+      <button type="button" class="btn btn-ghost dash-repeat-add" id="add-combo-btn">+ Adicionar combo</button>
+
+      <label for="g-dica">Dica (aparece em destaque abaixo dos combos)</label>
+      <textarea id="g-dica" placeholder="Ex: o W empoderado remove controle de grupo..."></textarea>
+      </div>
+
+      <div class="dash-fieldset">
+      <p class="dash-fieldset-title">Macro &amp; solo queue</p>
+      <label>Tópicos (aparecem numerados, na ordem que você adiciona)</label>
+      <div class="dash-repeat-list" id="macro-editor"></div>
+      <button type="button" class="btn btn-ghost dash-repeat-add" id="add-macro-btn">+ Adicionar tópico</button>
+      </div>
+
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Salvar conteúdo geral</button></div>
+      <p class="status-msg" id="general-status"></p>
+    </form>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<section class="section" id="section-clips">
+  <div class="container">
+    <div class="section-head"><div><h2>Clipes</h2><p>Cole um link do YouTube.</p></div></div>
+    <div class="dash-layout">
+    <form class="form-card dash-card dash-card--clips" id="clip-form">
+      <label for="c-title">Título</label>
+      <input type="text" id="c-title" required />
+      <label for="c-description">Descrição</label>
+      <textarea id="c-description"></textarea>
+      <label for="c-url">Link do YouTube</label>
+      <input type="url" id="c-url" required placeholder="https://youtube.com/watch?v=..." />
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Adicionar clipe</button></div>
+      <p class="status-msg" id="clip-status"></p>
+    </form>
+
+    <div class="dash-layout-side">
+      <h3>Clipes cadastrados</h3>
+      <table class="admin-table" id="clip-table">
+        <thead><tr><th>Título</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script src="../js/data.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+<script>
+  (function () {
+    const links = document.querySelectorAll('.dash-subnav a[data-subnav]');
+    const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting);
+      if (visible.length) setActive(visible[0].target.id);
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => s && observer.observe(s));
+  })();
+</script>
+</body>
+</html>

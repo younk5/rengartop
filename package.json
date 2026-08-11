@@ -1,0 +1,13 @@
+{
+  "name": "colar-de-presas-rengar-guide",
+  "version": "1.0.0",
+  "description": "Guia de matchups de Rengar (League of Legends)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "update-champions": "node scripts/update-champions.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

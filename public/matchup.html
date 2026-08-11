@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rengar Matchups — Marlon547</title>
+<meta name="description" content="Runas, build e como jogar cada matchup de Rengar Top." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Matchups de Rengar — Marlon547" />
+<meta property="og:url" content="https://marlon547.vercel.app/matchup.html" />
+<meta property="og:description" content="Runas, build e como jogar cada matchup de Rengar Top." />
+<meta property="og:image" content="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Rengar_0.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Matchups de Rengar — Marlon547" />
+<meta name="twitter:description" content="Runas, build e como jogar cada matchup de Rengar Top." />
+<meta name="twitter:image" content="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Rengar_0.jpg" />
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+<link rel="preconnect" href="https://ddragon.leagueoflegends.com" crossorigin />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <div class="row container">
+      <a class="brand" href="index.html">
+        <img
+          src="https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/3"
+          srcset="https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/2 1x, https://static-cdn.jtvnw.net/badges/v1/38c766d4-f162-495d-9c67-efbb3811c7bb/3 2x"
+          alt="Badge do Canal"
+          class="mark"
+        />
+        <span>Marlon547<small>Guia de Rengar</small></span>
+      </a>
+      <div class="navlinks">
+        <a href="index.html" class="active">Matchups</a>
+        <a href="guide.html">Guia geral</a>
+      </div>
+    </div>
+  </nav>
+
+<div id="matchup-root">
+  <header class="m-hero">
+    <img class="m-hero-bg" id="hero-splash" src="" alt="" aria-hidden="true" />
+    <div class="m-hero-overlay"></div>
+    <div class="container m-hero-content">
+      <div class="m-hero-icon" id="enemy-icon"><div class="skel skel-circle" style="width:100%;height:100%;"></div></div>
+      <div style="flex:1;">
+        <span class="m-tier-badge" id="tier-eyebrow"><span class="skel skel-text w-25" style="display:inline-block;vertical-align:middle;"></span></span>
+        <h1 class="m-title">Rengar <span class="m-vs">vs</span> <span class="m-enemy" id="enemy-name"><span class="skel skel-text lg w-40" style="display:inline-block;vertical-align:middle;"></span></span></h1>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container filters guide-toc" aria-label="Seções do matchup">
+    <a class="chip" href="#resumo">Resumo</a>
+    <a class="chip" href="#runas">Runas</a>
+    <a class="chip" href="#build">Build</a>
+    <a class="chip" href="#dicas">Dicas</a>
+  </nav>
+
+  <div class="container m-body">
+    <section class="m-card" id="resumo">
+      <p class="m-card-label">Resumo</p>
+      <p class="m-summary-text" id="panel-resumo">
+        <span class="skel skel-text w-100"></span><span class="skel skel-text w-80"></span><span class="skel skel-text w-60"></span>
+      </p>
+    </section>
+
+    <section id="runas">
+      <h2 class="m-h2">Runas</h2>
+      <div class="m-grid-3" id="rune-board">
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill"></div><div class="skel m-skel-pill"></div><div class="skel m-skel-pill"></div>
+        </div></div>
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill"></div><div class="skel m-skel-pill"></div>
+        </div></div>
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill"></div><div class="skel m-skel-pill"></div><div class="skel m-skel-pill"></div>
+        </div></div>
+      </div>
+      <p class="m-card m-note" id="runes-note"></p>
+    </section>
+
+    <section class="m-grid-3">
+      <div class="m-card">
+        <p class="m-card-label">Feitiços de invocador</p>
+        <div class="m-spells-row" id="summoner-spells">
+          <div class="skel m-skel-pill" style="width:56px;height:56px;"></div><div class="skel m-skel-pill" style="width:56px;height:56px;"></div>
+        </div>
+      </div>
+      <div class="m-card m-span-2">
+        <p class="m-card-label">Ordem de habilidades</p>
+        <div class="m-ability-pills" id="ability-pills">
+          <div class="skel m-skel-pill" style="width:64px;height:64px;"></div><div class="skel m-skel-pill" style="width:64px;height:64px;"></div><div class="skel m-skel-pill" style="width:64px;height:64px;"></div><div class="skel m-skel-pill" style="width:64px;height:64px;"></div>
+        </div>
+        <div class="m-skill-matrix" id="skill-grid"></div>
+        <p class="m-note-inline" id="skill-note"></p>
+      </div>
+    </section>
+
+    <section id="build">
+      <h2 class="m-h2">Build</h2>
+      <div class="m-grid-3" id="items-grid">
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill" style="width:52px;height:52px;"></div><div class="skel m-skel-pill" style="width:52px;height:52px;"></div>
+        </div></div>
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill" style="width:52px;height:52px;"></div><div class="skel m-skel-pill" style="width:52px;height:52px;"></div>
+        </div></div>
+        <div class="m-card skel-card"><div class="skel skel-text lg w-60" style="margin-bottom:14px;"></div><div class="m-skel-row">
+          <div class="skel m-skel-pill" style="width:52px;height:52px;"></div><div class="skel m-skel-pill" style="width:52px;height:52px;"></div><div class="skel m-skel-pill" style="width:52px;height:52px;"></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="m-card m-tips" id="dicas">
+      <p class="m-card-label m-tips-label">Dicas</p>
+      <p class="m-tips-text" id="panel-dicas"><span class="skel skel-text w-100"></span><span class="skel skel-text w-80"></span></p>
+    </section>
+  </div>
+</div>
+
+<footer class="container site-footer">
+  <p class="foot-note">Feito por <strong>Marlon547</strong> · Rengar Top</p>
+  <div class="social-links" aria-label="Redes sociais do Marlon547">
+    <a class="social-pill" href="https://www.twitch.tv/marlon547" target="_blank" rel="noopener noreferrer">Twitch</a>
+    <a class="social-pill" href="https://www.youtube.com/@arlon5477" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a class="social-pill" href="https://x.com/arlon547" target="_blank" rel="noopener noreferrer">X</a>
+    <a class="social-pill" href="https://www.tiktok.com/@arlon547" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a class="social-pill" href="https://www.instagram.com/morerno/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script type="module" src="js/matchup.js"></script>
+</body>
+</html>
