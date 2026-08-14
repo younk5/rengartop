@@ -14,5 +14,6 @@ export const firebaseConfig = {
 // está nas Regras de Segurança do Firestore — veja o README.
 export const ADMIN_EMAILS = [
   "vinicios.felipe93@gmail.com",
+  "marlon.moreno@gmail.com",
   // adicione aqui o e-mail do seu amigo
 ];
